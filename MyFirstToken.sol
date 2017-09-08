@@ -51,6 +51,7 @@ contract MyFirstToken is owned,ERC20Interface {
             balances[msg.sender] -= _value;
             balances[_to] += _value;
             
+	    Transfer(_from, _to, _value);
             success = true;
         } 
     }
@@ -64,10 +65,12 @@ contract MyFirstToken is owned,ERC20Interface {
         balances[_from] -= _value;
         balances[_to] += _value;
         
+	Transfer(_from, _to, _value);
         return true;
     }
     
     function approve(address _spender, uint256 _value) returns (bool success) {
+      Approval(msg.sender, _spender, _value);
       allowed[msg.sender][_spender] = _value;  
       
       return true;
