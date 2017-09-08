@@ -51,7 +51,7 @@ contract MyFirstToken is owned,ERC20Interface {
             balances[msg.sender] -= _value;
             balances[_to] += _value;
             
-	    Transfer(_from, _to, _value);
+	    Transfer(msg.sender, _to, _value);
             success = true;
         } 
     }
